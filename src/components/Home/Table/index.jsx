@@ -36,67 +36,64 @@ const TableComponent = () => {
       })
   }
 
-  const columns = useMemo(
-    () => [
-      {
-        title: 'Name',
-        align: 'center',
-        dataIndex: 'name_product',
-        key: 'name_product',
-      },
-      {
-        title: 'Price',
-        align: 'center',
-        render: ({ price }) => <p>Rp. {Number(price || 0).toLocaleString()}</p>,
-        key: 'price',
-      },
-      {
-        title: 'Color',
-        align: 'center',
-        dataIndex: 'colour',
-        key: 'colour',
-      },
-      {
-        title: 'Action',
-        align: 'center',
-        width: 175,
-        render: (props) => {
-          return (
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {!toggleEditProduct && (
-                <Button
-                  type='primary'
-                  style={{ width: '100%' }}
-                  onClick={() => onHandleToggleEditProduct(props._id)}
-                >
-                  Edit
-                </Button>
-              )}
-              {toggleEditProduct && (
-                <Suspense fallback={<Spin />}>
-                  <EditProductComponent
-                    visible={toggleEditProduct}
-                    onClose={onHandleToggleEditProduct}
-                    id={idEditProduct}
-                  />
-                </Suspense>
-              )}
+  const columns = [
+    {
+      title: 'Name',
+      align: 'center',
+      dataIndex: 'name_product',
+      key: 'name_product',
+    },
+    {
+      title: 'Price',
+      align: 'center',
+      render: ({ price }) => <p>Rp. {Number(price || 0).toLocaleString()}</p>,
+      key: 'price',
+    },
+    {
+      title: 'Color',
+      align: 'center',
+      dataIndex: 'colour',
+      key: 'colour',
+    },
+    {
+      title: 'Action',
+      align: 'center',
+      width: 175,
+      render: (props) => {
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {!toggleEditProduct && (
               <Button
                 type='primary'
-                style={{ width: '100%', marginTop: '10px' }}
-                data-testid={`delete-${props._id}`}
-                danger
-                onClick={() => onDeleteUser(props._id)}
+                style={{ width: '100%' }}
+                onClick={() => onHandleToggleEditProduct(props._id)}
               >
-                Delete
+                Edit
               </Button>
-            </div>
-          )
-        },
+            )}
+            {toggleEditProduct && (
+              <Suspense fallback={<Spin />}>
+                <EditProductComponent
+                  visible={toggleEditProduct}
+                  onClose={onHandleToggleEditProduct}
+                  id={idEditProduct}
+                />
+              </Suspense>
+            )}
+            <Button
+              type='primary'
+              style={{ width: '100%', marginTop: '10px' }}
+              data-testid={`delete-${props._id}`}
+              danger
+              onClick={() => onDeleteUser(props._id)}
+            >
+              Delete
+            </Button>
+          </div>
+        )
       },
-    ],
-    [idEditProduct, onHandleToggleEditProduct, onDeleteUser]
-  )
+    },
+  ]
 
   return (
     <div className='main-wrapper'>
