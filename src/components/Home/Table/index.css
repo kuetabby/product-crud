@@ -1,0 +1,62 @@
+div.ant-card-body {
+  padding: 0px 1px;
+}
+
+div.ant-card.ant-card-bordered {
+  border-color: #3783c6;
+}
+
+div.ant-card-head {
+  border-color: #3783c6;
+}
+
+div.ant-card-head-title {
+  font-size: medium;
+  font-weight: 600;
+}
+
+thead.ant-table-thead > tr > th {
+  background: #3783c6;
+  color: white;
+}
+
+.main-wrapper {
+  width: 95%;
+  height: fit-content;
+  min-height: 100vh;
+  margin: auto;
+}
+
+.error-wrapper {
+  width: 100%;
+  height: 200px;
+  align-items: center;
+}
+
+.error {
+  text-align: center;
+  color: #a61d24;
+}
+
+.ant-card-head-title {
+  color: #3783c6;
+}
+
+.ant-input-group .ant-input {
+}
+
+@media screen and (max-width: 700px) {
+  .ant-card,
+  .ant-card-bordered {
+    overflow: auto;
+    overflow-x: scroll;
+  }
+
+  .main-wrapper {
+    width: 100%;
+  }
+
+  div.ant-card.ant-card-bordered {
+    margin: auto 10px;
+  }
+}

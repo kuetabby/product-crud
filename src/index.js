@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from 'react-redux'
+
+
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { store } from './redux/store'
+
+import HomeComponent from 'components/Home'
+
+import 'antd/dist/antd.css'
+
+console.log(store.getState())
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeComponent />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
