@@ -1,4 +1,4 @@
-import React, { useState, useMemo, lazy, Suspense } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import { Table, Button, Row, Card, Spin } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 
